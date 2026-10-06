@@ -1,9 +1,14 @@
+import HotelCard from "@/component/HotelCard";
+
 export default function Hotels() {
   return (
     <main>
-        <h1>Hotels</h1>
-
-        <p>Browse our hotels</p>
+      <HotelCard 
+        name="Comfort Place"
+        location="Lagos, Nigeria"
+        price={85000}
+        image=""
+      />
     </main>
   )
 }
