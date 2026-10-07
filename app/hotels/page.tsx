@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HotelCard from "@/components/HotelCard";
 
 const hotels = [
@@ -78,6 +78,25 @@ const hotels = [
 ];
 
 export default function Hotels() {
+
+  useEffect(() => {
+    async function getHotels() {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/posts"
+      );
+
+      console.log("RESPONSE:", response);
+
+      const data = await response.json();
+
+      console.log(data);
+
+      console.log("DATA:", data);
+    }
+
+    getHotels();
+  }, []);
+
   const [search, setSearch] = useState("");
 
   const filteredHotels = hotels.filter((hotel) => {
@@ -92,7 +111,8 @@ export default function Hotels() {
   return (
     <main className="mx-auto w-full px-8 py-16">
       <section className="mb-12 mx-auto w-full">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+        <div className="">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
           Discover your way
         </p>
 
@@ -116,6 +136,7 @@ export default function Hotels() {
         </div>
 
         <p>Searching for: {search} | Results: {filteredHotels.length}</p>
+        </div>
 
         {/* <p className="mt-3 text-sm text-gray-500">
           Searching for: {search}
