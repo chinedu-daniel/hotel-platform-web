@@ -32,7 +32,7 @@ export default function Home() {
 
         <div className="flex-1">
           <Image 
-            src=""
+            src="/photos/Hotel3.jpg"
             alt=""
             width={800}
             height={500}
